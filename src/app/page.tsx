@@ -1,6 +1,13 @@
-import Image from 'next/image'
+"use client"
+import Image from 'next/image';
+import { authenticate } from '../api/Api';
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    authenticate()
+  }, [])
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
