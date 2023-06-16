@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 const apiKey = 'efbc2b95033e7dde757b6c455744baa2';
 
@@ -10,8 +10,8 @@ export const api = axios.create({
 });
 
 export const authenticate = async () => {
-    await api.get('/authentication')
-    .catch((error: Error) => {
-      console.error('Error al validar la clave de API:', error.message);
-    });
-  }
+  await api.get('/authentication')
+  .catch((error: Error) => {
+    console.error('Error authentication API: ', error.message);
+  });
+}
