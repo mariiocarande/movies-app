@@ -9,7 +9,7 @@ const MovieList: React.FC = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       await api
-        .get("/movie/popular")
+        .get("/movie/popular", { params: { page: 1 } })
         .then((response: AxiosResponse) => {
           setMovies(response.data.results);
         })
@@ -23,7 +23,7 @@ const MovieList: React.FC = () => {
 
   return (
     <div className="flex">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="mx-20 max-w-screen-2xl px-4 md:px-8">
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>

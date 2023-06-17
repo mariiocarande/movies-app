@@ -7,16 +7,16 @@ interface Props {
 }
 
 const MovieItem: React.FC<Props> = ({ movie }) => (
-  <div className="bg-slate-100 rounded-xl m-8 p-4">
+  <div className="flex flex-col bg-slate-100 rounded-xl m-8 p-4">
     <div className="flex mb-6 items-end justify-between gap-4">
       <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">
         {movie?.title}
       </h2>
     </div>
-    <div className="flex gap-10">
+    <div className="flex flex-col lg:flex-row gap-10">
       <Link
         href={`/${movie?.id}`}
-        className="group relative mb-2 block h-80 overflow-hidden rounded-lg bg-gray-100 lg:mb-3"
+        className="group relative mb-2 block overflow-hidden rounded-lg bg-gray-100 lg:mb-3"
       >
         <Image
           width={200}

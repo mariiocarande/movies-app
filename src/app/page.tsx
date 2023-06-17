@@ -1,7 +1,7 @@
 "use client";
 import { authenticate } from "../api/Api";
 import { useEffect } from "react";
-import List from "./components/MovieList";
+import MovieList from "./components/MovieList";
 import Container from "./components/Container";
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
       </section>
 
       <section>
-        <List />
+        <MovieList />
       </section>
     </Container>
   );
