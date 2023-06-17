@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 interface Props {
@@ -11,7 +12,10 @@ const MovieItem: React.FC<Props> = ({ movie }) => (
       <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">{movie?.title}</h2>
     </div>
     <div className="flex gap-10">
-      <a href="#" className="group relative mb-2 block h-80 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
+      <Link
+        href={`/${movie?.id}`}
+        className="group relative mb-2 block h-80 overflow-hidden rounded-lg bg-gray-100 lg:mb-3"
+      >
         <Image
           width={200}
           height={200}
@@ -22,7 +26,7 @@ const MovieItem: React.FC<Props> = ({ movie }) => (
         />
 
         <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">new</span>
-      </a>
+      </Link>
 
       <div className="flex w-60 flex-col">
         <div>
