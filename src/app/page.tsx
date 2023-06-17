@@ -1,7 +1,8 @@
-"use client"
-import { authenticate } from '../api/Api';
-import { useEffect } from 'react';
-import List from './components/MovieList';
+"use client";
+import { authenticate } from "../api/Api";
+import { useEffect } from "react";
+import List from "./components/MovieList";
+import Container from "./components/Container";
 
 const Home = () => {
   useEffect(() => {
@@ -9,7 +10,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-r from-slate-900 to-slate-700">
+    <Container>
       <section>
         <div>
           <h1 className="text-5xl font-bold text-white">Movies App</h1>
@@ -19,7 +20,7 @@ const Home = () => {
       <section>
         <List />
       </section>
-    </main>
+    </Container>
   );
 };
 
