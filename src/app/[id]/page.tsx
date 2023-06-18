@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Detail: React.FC<Props> = ({ params }) => {
-  const [movie, setMovie] = React.useState<Movies>();
+  const [movie, setMovie] = React.useState<Movie>();
 
   useEffect(() => {
     const fetchMovie = async () => {
