@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { AxiosResponse } from "axios";
+import { PaginationControl } from "react-bootstrap-pagination-control";
+
 import MovieItem from "./MovieItem";
 import { api } from "@/api/Api";
-import { AxiosResponse } from "axios";
 
 const MovieList: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
 
   const fetchMovies = async (page: number) => {
     await api
       .get("/movie/popular", { params: { page } })
       .then((response: AxiosResponse) => {
-        setMovies(response.data.results.splice(0, 10));
-        setTotalPages(response.data.total_pages);
+        setMovies(response.data.results);
       })
       .catch((error: Error) => {
         console.error("Error authentication API: ", error.message);
@@ -24,13 +24,17 @@ const MovieList: React.FC = () => {
     fetchMovies(currentPage);
   }, [currentPage]);
 
-  const handlePrevPage = () => {
-    setCurrentPage(currentPage - 1);
+  const handlePageClick = (page: number) => {
+    setCurrentPage(page);
   };
 
-  const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
+  if (movies.length === 0) {
+    return (
+      <div className="mt-8">
+        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] text-white" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -44,26 +48,14 @@ const MovieList: React.FC = () => {
         </ul>
       </div>
 
-      <div className="flex gap-4">
-        {currentPage !== 1 && (
-          <button
-            className="bg-slate-100 rounded-sm border text-black"
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-          >
-            Anterior
-          </button>
-        )}
-        {currentPage !== totalPages && (
-          <button
-            className="bg-slate-100 rounded-sm border text-black"
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-          >
-            Siguiente
-          </button>
-        )}
-      </div>
+      <PaginationControl
+        page={currentPage}
+        between={4}
+        total={5000}
+        limit={10}
+        changePage={handlePageClick}
+        ellipsis={1}
+      />
     </div>
   );
 };
