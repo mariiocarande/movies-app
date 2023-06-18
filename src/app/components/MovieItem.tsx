@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 interface Props {
-  movie?: Movies;
+  movie?: Movie;
 }
 
 const MovieItem: React.FC<Props> = ({ movie }) => (
@@ -21,7 +21,7 @@ const MovieItem: React.FC<Props> = ({ movie }) => (
         <Image
           width={200}
           height={200}
-          priority
+          loading="lazy"
           src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
           alt="Photo by Rachit Tank"
           className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"

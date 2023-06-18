@@ -1,4 +1,4 @@
-interface Movies {
+interface Movie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -15,9 +15,7 @@ interface Movies {
   vote_count: number;
 }
 
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
+interface MovieDetail extends Movie {
   belongs_to_collection: {
     id: number;
     name: string;
@@ -30,13 +28,7 @@ interface Movie {
     name: string;
   }[];
   homepage: string;
-  id: number;
   imdb_id: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
   production_companies: {
     id: number;
     logo_path: string;
@@ -47,7 +39,6 @@ interface Movie {
     iso_3166_1: string;
     name: string;
   }[];
-  release_date: string;
   revenue: number;
   runtime: number;
   spoken_languages: {
@@ -57,8 +48,4 @@ interface Movie {
   }[];
   status: string;
   tagline: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
 }
