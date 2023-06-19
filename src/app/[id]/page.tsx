@@ -1,11 +1,9 @@
 "use client";
 import React, { useEffect } from "react";
-import Container from "../components/Container";
 import { api } from "@/api/Api";
 import { AxiosResponse } from "axios";
-import MovieItem from "../components/MovieItem";
-import { HiArrowLeft } from "react-icons/hi2";
-import Link from "next/link";
+import { MovieDetailType } from "../types/types";
+import MovieDetail from "../components/MovieDetail";
 
 interface Props {
   params: {
@@ -14,7 +12,7 @@ interface Props {
 }
 
 const Detail: React.FC<Props> = ({ params }) => {
-  const [movie, setMovie] = React.useState<Movie>();
+  const [movie, setMovie] = React.useState<MovieDetailType>();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -31,18 +29,7 @@ const Detail: React.FC<Props> = ({ params }) => {
     fetchMovie();
   }, [params.id]);
 
-  return (
-    <Container>
-      <div className="flex justify-start w-full">
-        <Link href="/">
-          <HiArrowLeft size={20} />
-        </Link>
-      </div>
-      <section>
-        <MovieItem movie={movie} />
-      </section>
-    </Container>
-  );
+  return <MovieDetail movie={movie} />;
 };
 
 export default Detail;

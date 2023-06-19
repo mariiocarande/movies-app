@@ -1,7 +1,15 @@
-interface Movie {
+export enum LanguagesTypes {
+  en = "🇺🇸 English",
+  es = "🇪🇸 Spanish",
+}
+
+export interface Movie {
   adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
+  genres: {
+    id: number;
+    name: string;
+  }[];
   id: number;
   original_language: string;
   original_title: string;
@@ -15,7 +23,7 @@ interface Movie {
   vote_count: number;
 }
 
-interface MovieDetail extends Movie {
+export interface MovieDetailType extends Movie {
   belongs_to_collection: {
     id: number;
     name: string;
@@ -23,10 +31,6 @@ interface MovieDetail extends Movie {
     poster_path: string;
   };
   budget: number;
-  genres: {
-    id: number;
-    name: string;
-  }[];
   homepage: string;
   imdb_id: string;
   production_companies: {

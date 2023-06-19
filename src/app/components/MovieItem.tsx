@@ -1,29 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Movie } from "../types/types";
 
 interface Props {
   movie?: Movie;
 }
 
 const MovieItem: React.FC<Props> = ({ movie }) => (
-  <div className="bg-slate-100 rounded-xl m-8 p-4">
+  <div className="flex flex-col bg-slate-100 rounded-xl m-8 p-4">
     <div className="flex mb-6 items-end justify-between gap-4">
       <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">
         {movie?.title}
       </h2>
     </div>
-    <div className="flex gap-10">
+    <div className="flex flex-col lg:flex-row gap-10">
       <Link
         href={`/${movie?.id}`}
-        className="group relative mb-2 block h-80 overflow-hidden rounded-lg bg-gray-100 lg:mb-3"
+        className="group relative mb-2 block overflow-hidden rounded-lg bg-gray-100 lg:mb-3"
       >
         <Image
           width={200}
           height={200}
           loading="lazy"
           src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-          alt="Photo by Rachit Tank"
+          alt="Poster of a movie"
           className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
         />
 
