@@ -3,7 +3,9 @@ import { AxiosResponse } from "axios";
 import { PaginationControl } from "react-bootstrap-pagination-control";
 
 import MovieItem from "./MovieItem";
+import Spinner from "./Spinner";
 import { api } from "@/api/Api";
+import { Movie } from "../types/types";
 
 const MovieList: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -28,13 +30,7 @@ const MovieList: React.FC = () => {
     setCurrentPage(page);
   };
 
-  if (movies.length === 0) {
-    return (
-      <div className="mt-8">
-        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] text-white" />
-      </div>
-    );
-  }
+  if (movies.length === 0) return <Spinner className="text-white" />;
 
   return (
     <div className="flex flex-col items-center">

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Movie } from "../types/types";
 
 interface Props {
   movie?: Movie;
@@ -23,7 +24,7 @@ const MovieItem: React.FC<Props> = ({ movie }) => (
           height={200}
           loading="lazy"
           src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-          alt="Photo by Rachit Tank"
+          alt="Poster of a movie"
           className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
         />
 
