@@ -29,7 +29,7 @@ const MovieList: React.FC = () => {
 
   const displayList = () => {
     if (movies.length === 0 || !movies || isLoading) {
-      return <Spinner className="text-white" />;
+      return <Spinner data-testid="spinner" className="text-white" />;
     }
 
     return (
@@ -38,7 +38,7 @@ const MovieList: React.FC = () => {
           <ul>
             {movies.map((movie) => (
               <li key={movie.id}>
-                <MovieItem movie={movie} />
+                <MovieItem data-testid="movie-item" movie={movie} />
               </li>
             ))}
           </ul>
