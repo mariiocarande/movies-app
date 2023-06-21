@@ -8,10 +8,14 @@ interface Props {
 }
 
 const todayMonth = new Date().getMonth() + 1;
+const todayYear = new Date().getFullYear();
 
 const MovieItem: React.FC<Props> = ({ movie }) => {
   const movieMonth =
     new Date(Date.parse(movie?.release_date || "")).getMonth() + 1;
+  const movieYear = new Date(
+    Date.parse(movie?.release_date || "")
+  ).getFullYear();
 
   return (
     <div className="flex flex-col bg-slate-100 rounded-xl m-8 p-4">
@@ -34,7 +38,7 @@ const MovieItem: React.FC<Props> = ({ movie }) => {
             className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
           />
 
-          {movieMonth === todayMonth && (
+          {movieMonth === todayMonth && movieYear === todayYear && (
             <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
               new
             </span>

@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 const apiKey = "efbc2b95033e7dde757b6c455744baa2";
 
@@ -8,9 +8,3 @@ export const api = axios.create({
     api_key: apiKey,
   },
 });
-
-export const authenticate = async () => {
-  await api.get("/authentication").catch((error: Error) => {
-    console.error("Error authentication API: ", error.message);
-  });
-};

@@ -1,7 +1,5 @@
 import React from "react";
-import { Formik, Form } from "formik";
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { api } from "@/api/Api";
 
 interface SearchBarProps {
   searchValue: string;
@@ -12,6 +10,7 @@ interface SearchBarProps {
 const Searchbar: React.FC<SearchBarProps> = ({
   setSearchValue,
   searchMovies,
+  searchValue,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -22,9 +21,10 @@ const Searchbar: React.FC<SearchBarProps> = ({
       <div className="flex gap-2">
         <input placeholder="Search for a movie" onChange={handleChange} />
         <button
-          className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md gap-2"
+          className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md gap-2 disabled:opacity-80"
           type="button"
           onClick={searchMovies}
+          disabled={searchValue.length === 0}
         >
           Search
           <HiMagnifyingGlass size="20" />
