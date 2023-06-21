@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import MovieDetail from "../components/MovieDetail";
-import useMovies from "../hooks/useMovies";
+import MovieDetail from "../../components/MovieDetail";
+import useMovies from "../../hooks/useMovies";
 
 interface Props {
   params: {
