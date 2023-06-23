@@ -37,8 +37,8 @@ const MovieList: React.FC = () => {
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
           <ul>
             {movies.map((movie) => (
-              <li key={movie.id}>
-                <MovieItem data-testid="movie-item" movie={movie} />
+              <li key={movie.id} data-testid="movie-item">
+                <MovieItem movie={movie} />
               </li>
             ))}
           </ul>

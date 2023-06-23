@@ -37,7 +37,7 @@ const useMovies = () => {
         setIsLoading(false);
       })
       .catch((error: Error) => {
-        console.error("Error authentication API: ", error.message);
+        console.error("API Error: ", error.message);
       });
   };
 
@@ -50,7 +50,7 @@ const useMovies = () => {
         setIsLoading(false);
       })
       .catch((error: Error) => {
-        console.error("Error authentication API: ", error.message);
+        console.error("API Error: ", error.message);
       });
   };
 
@@ -67,7 +67,7 @@ const useMovies = () => {
         setIsLoading(false);
       })
       .catch((error: Error) => {
-        console.error("Error authentication API: ", error.message);
+        console.error("API Error: ", error.message);
       });
   };
 
