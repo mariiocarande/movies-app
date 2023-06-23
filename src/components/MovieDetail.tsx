@@ -46,12 +46,12 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                 ) : (
                   <>
                     <div className="flex mb-6">
-                      <h2 className="text-2xl font-bold text-gray-800 lg:text-5xl">
+                      <h2 className="text-2xl font-bold text-blue-800 lg:text-5xl">
                         {movieData?.title}
                       </h2>
                     </div>
                     <div className="flex flex-col lg:flex-row gap-10">
-                      <div className="group relative mb-2 block overflow-hidden rounded-lg bg-slate-100 lg:mb-3">
+                      <div className="group relative block overflow-hidden rounded-lg bg-slate-100">
                         <Image
                           width={200}
                           height={200}
@@ -61,7 +61,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                           className="h-full w-full object-cover object-top transition duration-200 group-hover:scale-110"
                         />
                       </div>
-                      <div className="flex flex-col lg:flex-row w-60">
+                      <div className="flex flex-col lg:flex-row w-min">
                         <div>
                           <h3 className="text-md font-bold text-black">
                             Description:{" "}
@@ -71,7 +71,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                           </span>
                         </div>
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-min">
                         <div>
                           <h3 className="text-md font-bold text-black">
                             Release Date:{" "}
