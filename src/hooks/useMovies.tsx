@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 import { useState } from "react";
 import { Movie, MovieDetailType } from "../types/types";
 
-interface MoviesDataType {
+export interface MoviesDataType {
   results: Movie[];
   total_pages: number;
   total_results: number;
@@ -20,8 +20,9 @@ const useMovies = () => {
   const [movieData, setMovieData] = useState<MovieDetailType>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchMovies = async (page: number) => {
+  const fetchMovies = async (page?: number) => {
     setIsLoading(true);
+
     await api
       .get("/movie/popular", { params: { page } })
       .then((response: AxiosResponse) => {
@@ -35,6 +36,7 @@ const useMovies = () => {
 
   const fetchMovie = async (id: string) => {
     setIsLoading(true);
+
     await api
       .get(`/movie/${id}`)
       .then((response: AxiosResponse) => {
@@ -46,12 +48,14 @@ const useMovies = () => {
       });
   };
 
-  const searchMovies = async (searchValue: string) => {
+  const searchMovies = async (searchValue: string, page: number) => {
     setIsLoading(true);
+
     await api
       .get("/search/movie", {
         params: {
           query: searchValue,
+          page,
         },
       })
       .then((response: AxiosResponse) => {
