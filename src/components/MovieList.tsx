@@ -8,7 +8,6 @@ import useMovies from "../hooks/useMovies";
 import { Movie } from "../types/types";
 
 const MovieList: React.FC = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const { fetchMovies, moviesData, searchMovies, isLoading } = useMovies();
@@ -17,18 +16,12 @@ const MovieList: React.FC = () => {
     fetchMovies(currentPage);
   }, [currentPage]);
 
-  useEffect(() => {
-    if (moviesData) {
-      setMovies(moviesData.results);
-    }
-  }, [moviesData]);
-
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
   };
 
   const displayList = () => {
-    if (movies.length === 0 || !movies || isLoading) {
+    if (moviesData.results.length === 0 || !moviesData || isLoading) {
       return <Spinner data-testid="spinner" className="text-white" />;
     }
 
@@ -36,7 +29,7 @@ const MovieList: React.FC = () => {
       <div>
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
           <ul>
-            {movies.map((movie) => (
+            {moviesData.results.map((movie) => (
               <li key={movie.id} data-testid="movie-item">
                 <MovieItem movie={movie} />
               </li>
