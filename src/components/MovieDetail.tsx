@@ -7,12 +7,7 @@ import { HiArrowLeft } from "react-icons/hi2";
 import Spinner from "./Spinner";
 import { LanguagesTypes } from "../types/types";
 import useMovies from "@/hooks/useMovies";
-
-const formatToCurrency = (value: number) =>
-  value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+import { formatToCurrency } from "@/utils/utils";
 
 interface Props {
   movieId: string;
