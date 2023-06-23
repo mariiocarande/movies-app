@@ -41,7 +41,6 @@ const MovieItem: React.FC<Props> = ({ movie }) => {
         </h2>
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="flex flex-col w-auto">
-            <h3 className="mb-2 text-md font-bold text-black">Description: </h3>
             <span className="text-black">{movie?.overview || "-"}</span>
           </div>
         </div>
