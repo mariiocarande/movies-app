@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import MovieDetail from "../../components/MovieDetail";
-import useMovies from "../../hooks/useMovies";
 
 interface Props {
   params: {
@@ -9,14 +8,8 @@ interface Props {
   };
 }
 
-const Detail: React.FC<Props> = ({ params }) => {
-  const { fetchMovie, movieData } = useMovies();
-
-  useEffect(() => {
-    fetchMovie(params.id);
-  }, [params.id]);
-
-  return <MovieDetail movie={movieData} />;
-};
+const Detail: React.FC<Props> = ({ params }) => (
+  <MovieDetail movieId={params.id} />
+);
 
 export default Detail;

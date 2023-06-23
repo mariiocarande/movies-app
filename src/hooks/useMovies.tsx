@@ -10,14 +10,6 @@ interface MoviesDataType {
   page: number;
 }
 
-interface QueryParams {
-  page?: number;
-  year?: string;
-  query: string;
-  include_adult?: boolean;
-  region?: string;
-}
-
 const useMovies = () => {
   const [moviesData, setMoviesData] = useState<MoviesDataType>({
     results: [],
@@ -37,7 +29,7 @@ const useMovies = () => {
         setIsLoading(false);
       })
       .catch((error: Error) => {
-        console.error("Error authentication API: ", error.message);
+        console.error("API Error: ", error.message);
       });
   };
 
@@ -50,7 +42,7 @@ const useMovies = () => {
         setIsLoading(false);
       })
       .catch((error: Error) => {
-        console.error("Error authentication API: ", error.message);
+        console.error("API Error: ", error.message);
       });
   };
 
@@ -67,7 +59,7 @@ const useMovies = () => {
         setIsLoading(false);
       })
       .catch((error: Error) => {
-        console.error("Error authentication API: ", error.message);
+        console.error("API Error: ", error.message);
       });
   };
 
