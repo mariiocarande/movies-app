@@ -21,7 +21,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
   }, [movieId]);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black" data-testid="movie-detail">
       <div
         className="flex bg-cover bg-center flex-col items-center"
         style={{
@@ -31,14 +31,16 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
         <div className="flex justify-center w-full min-h-screen backdrop-blur-sm p-24">
           <div className="flex flex-col justify-center w-max">
             <div className="flex flex-col justify-center h-max w-full">
-              <div className="flex flex-row justify-start h-max w-min bg-slate-100 rounded-xl">
-                <Link href="/">
-                  <HiArrowLeft size={40} />
-                </Link>
-              </div>
-              <div className="flex flex-col w-full bg-slate-100 rounded-xl mt-4 p-4">
+              {movieData && (
+                <div className="flex flex-row justify-start h-max w-min bg-slate-100 rounded-xl">
+                  <Link href="/">
+                    <HiArrowLeft size={40} />
+                  </Link>
+                </div>
+              )}
+              <div className="flex flex-col bg-slate-100 rounded-xl mt-4 p-4">
                 {!movieData ? (
-                  <div className="flex justify-center gap-4">
+                  <div className="flex justify-center" data-testid="spinner">
                     <Spinner className="text-black" />
                   </div>
                 ) : (
@@ -83,7 +85,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                             Rating:{" "}
                           </h3>
                           <ReactStars
-                            value={movieData.vote_average / 2}
+                            value={movieData?.vote_average || 0 / 2}
                             count={5}
                             size={24}
                             color2={"#ffd700"}
@@ -130,7 +132,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                             Budget:{" "}
                           </h3>
                           <span className="text-black">
-                            {formatToCurrency(movieData?.budget)}
+                            {formatToCurrency(movieData?.budget || 0)}
                           </span>
                         </div>
                       </div>

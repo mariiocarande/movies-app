@@ -10,14 +10,6 @@ interface MoviesDataType {
   page: number;
 }
 
-interface QueryParams {
-  page?: number;
-  year?: string;
-  query: string;
-  include_adult?: boolean;
-  region?: string;
-}
-
 const useMovies = () => {
   const [moviesData, setMoviesData] = useState<MoviesDataType>({
     results: [],
