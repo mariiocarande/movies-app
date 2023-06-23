@@ -85,7 +85,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                             Rating:{" "}
                           </h3>
                           <ReactStars
-                            value={movieData?.vote_average || 0 / 2}
+                            value={movieData?.vote_average / 2}
                             count={5}
                             size={24}
                             color2={"#ffd700"}
@@ -132,7 +132,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                             Budget:{" "}
                           </h3>
                           <span className="text-black">
-                            {formatToCurrency(movieData?.budget || 0)}
+                            {formatToCurrency(movieData?.budget)}
                           </span>
                         </div>
                       </div>
