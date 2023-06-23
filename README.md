@@ -1,4 +1,4 @@
-# Movie App
+# Movies App
 
 This is a project for displaying movies and their details. It is built with [Next.js](https://nextjs.org/) and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
