@@ -38,7 +38,7 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
                   </Link>
                 </div>
               )}
-              <div className="flex flex-col bg-slate-100 rounded-xl mt-4 p-4">
+              <div className="flex flex-col bg-slate-100 shadow-xl shadow-black rounded-xl mt-4 p-4">
                 {!movieData ? (
                   <div className="flex justify-center" data-testid="spinner">
                     <Spinner className="text-black" />

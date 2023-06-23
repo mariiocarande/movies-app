@@ -12,11 +12,18 @@ const MovieList: React.FC = () => {
   const { fetchMovies, moviesData, searchMovies, isLoading } = useMovies();
 
   useEffect(() => {
-    fetchMovies(currentPage);
-  }, [currentPage]);
+    fetchMovies();
+  }, []);
 
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
+    if (!searchValue) {
+      fetchMovies(page);
+    }
+
+    if (searchValue) {
+      searchMovies(searchValue, page);
+    }
   };
 
   const displayList = () => {
@@ -54,13 +61,12 @@ const MovieList: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div>
-        <Searchbar
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          searchMovies={() => searchMovies(searchValue)}
-        />
-      </div>
+      <Searchbar
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        searchMovies={() => searchMovies(searchValue, currentPage)}
+        isLoading={isLoading}
+      />
       {displayList()}
     </div>
   );
