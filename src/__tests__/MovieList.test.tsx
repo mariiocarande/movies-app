@@ -3,17 +3,23 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import MovieList from "@/components/MovieList";
 
+jest.mock("../hooks/useMovies", () => {
+  return jest.fn(() => ({
+    fetchMovies: jest.fn(),
+    moviesData: {
+      results: [
+        { id: 1, title: "The Matrix", director: "Lana Wachowski" },
+        { id: 2, title: "The Godfather", director: "Francis Ford Coppola" },
+      ],
+    },
+  }));
+});
+
 describe("MovieList component", () => {
   it("should render searchbar", () => {
     render(<MovieList />);
     const searchbarElement = screen.getByPlaceholderText(/Search for a movie/i);
     expect(searchbarElement).toBeInTheDocument();
-  });
-
-  it("should render spinner", () => {
-    render(<MovieList />);
-    const spinnerElement = screen.getByTestId("spinner");
-    expect(spinnerElement).toBeInTheDocument();
   });
 
   it("should render movie items", async () => {

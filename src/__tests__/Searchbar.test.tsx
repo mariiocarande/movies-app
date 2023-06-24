@@ -12,6 +12,7 @@ describe("Searchbar", () => {
         searchValue=""
         setSearchValue={setSearchValue}
         searchMovies={searchMovies}
+        isLoading={false}
       />
     );
 
@@ -31,6 +32,7 @@ describe("Searchbar", () => {
         searchValue=""
         setSearchValue={setSearchValue}
         searchMovies={searchMovies}
+        isLoading={false}
       />
     );
 
@@ -49,6 +51,7 @@ describe("Searchbar", () => {
         searchValue="test"
         setSearchValue={setSearchValue}
         searchMovies={searchMovies}
+        isLoading={false}
       />
     );
 
@@ -67,6 +70,7 @@ describe("Searchbar", () => {
         searchValue=""
         setSearchValue={setSearchValue}
         searchMovies={searchMovies}
+        isLoading={false}
       />
     );
 
