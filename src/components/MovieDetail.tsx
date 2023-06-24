@@ -28,16 +28,19 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
           backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData?.backdrop_path})`,
         }}
       >
+        {movieData && (
+          <div className="h-30 w-full bg-gradient-to-b from-black75 to-transparent p-2 absolute z-10">
+            <div className="w-10">
+              <Link href="/">
+                <HiArrowLeft size={40} color="white" />
+              </Link>
+            </div>
+          </div>
+        )}
+
         <div className="flex justify-center w-full min-h-screen backdrop-blur-sm p-24">
           <div className="flex flex-col justify-center w-max">
             <div className="flex flex-col justify-center h-max w-full">
-              {movieData && (
-                <div className="flex flex-row justify-start h-max w-min bg-slate-100 rounded-xl">
-                  <Link href="/">
-                    <HiArrowLeft size={40} />
-                  </Link>
-                </div>
-              )}
               <div className="flex flex-col bg-slate-100 shadow-xl shadow-black rounded-xl mt-4 p-4">
                 {!movieData ? (
                   <div className="flex justify-center" data-testid="spinner">
