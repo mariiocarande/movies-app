@@ -20,13 +20,17 @@ const MovieDetail: React.FC<Props> = ({ movieId }) => {
     fetchMovie(movieId);
   }, [movieId]);
 
+  const style = movieData
+    ? {
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData?.backdrop_path})`,
+      }
+    : { backgroundImage: "black" };
+
   return (
     <div className="min-h-screen bg-black" data-testid="movie-detail">
       <div
         className="flex bg-cover bg-center flex-col items-center"
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData?.backdrop_path})`,
-        }}
+        style={style}
       >
         {movieData && (
           <div className="h-30 w-full bg-gradient-to-b from-black75 to-transparent p-2 absolute z-10">
