@@ -8,6 +8,7 @@ import Spinner from "./Spinner";
 import useMovies from "../hooks/useMovies";
 import { currentYear, yearOptions } from "@/utils/utils";
 import { FetchMoviesParams, InitialValues } from "@/types/types";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const MovieList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,6 +50,7 @@ const MovieList: React.FC = () => {
             ))}
           </ul>
         </div>
+        <ScrollToTopButton />
 
         <PaginationControl
           page={currentPage}
@@ -90,7 +92,7 @@ const MovieList: React.FC = () => {
           };
 
           return (
-            <Form className="space-y-4 bg-slate-100 rounded-md p-4">
+            <Form className="lg:flex space-y-4 lg:space-y-0 items-center gap-2 bg-slate-100 rounded-md p-4">
               <div className="flex items-center">
                 <label
                   htmlFor="with_genres"
@@ -160,7 +162,7 @@ const MovieList: React.FC = () => {
                   name="with_original_language"
                   className="flex w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 >
-                  <option value="">None</option>
+                  <option value="">-</option>
                   <option value="en">🇺🇸 English</option>
                   <option value="es">🇪🇸 Spanish</option>
                 </Field>
@@ -182,20 +184,22 @@ const MovieList: React.FC = () => {
                   <option value="popularity.asc">Popularity (Ascending)</option>
                 </Field>
               </div>
-              <button
-                type="submit"
-                className="flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:opacity-80"
-                disabled={!dirty}
-              >
-                Apply Filters
-              </button>
-              <button
-                type="button"
-                onClick={onResetForm}
-                className="flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:opacity-80"
-              >
-                Clear Filters
-              </button>
+              <div className="lg:flex lg:items-center space-y-2 lg:space-y-0 lg:space-x-2">
+                <button
+                  type="submit"
+                  className="flex justify-center w-full lg:w-fit px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:opacity-80"
+                  disabled={!dirty}
+                >
+                  Apply Filters
+                </button>
+                <button
+                  type="button"
+                  onClick={onResetForm}
+                  className="flex justify-center w-full lg:w-fit px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:opacity-80"
+                >
+                  Clear Filters
+                </button>
+              </div>
             </Form>
           );
         }}
