@@ -162,7 +162,7 @@ const MovieList: React.FC = () => {
                   name="with_original_language"
                   className="flex w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 >
-                  <option value="">None</option>
+                  <option value="">-</option>
                   <option value="en">🇺🇸 English</option>
                   <option value="es">🇪🇸 Spanish</option>
                 </Field>
