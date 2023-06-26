@@ -53,3 +53,26 @@ export interface MovieDetailType extends Movie {
   status: string;
   tagline: string;
 }
+
+export interface InitialValues {
+  page: number;
+  with_genres?: string;
+  primary_release_year?: string;
+  with_original_language?: string;
+  sort_by?: string;
+}
+
+export interface MoviesDataType {
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+  page: number;
+}
+
+export interface FetchMoviesParams {
+  page: number;
+  with_genres?: string;
+  primary_release_year?: string;
+  with_original_language?: string;
+  sort_by?: string;
+}
