@@ -1,15 +1,14 @@
+import React from "react";
+import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+
 import { Movie } from "../types/types";
-import dayjs from "dayjs";
+import { currentMonth, currentYear } from "@/utils/utils";
 
 interface Props {
   movie?: Movie;
 }
-const todayMonth = dayjs().month() + 1;
-const todayYear = dayjs().year();
-
 const MovieItem: React.FC<Props> = ({ movie }) => {
   const movieMonth = dayjs(movie?.release_date).month() + 1;
   const movieYear = dayjs(movie?.release_date).year();
@@ -29,7 +28,7 @@ const MovieItem: React.FC<Props> = ({ movie }) => {
           className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
         />
 
-        {movieMonth === todayMonth && movieYear === todayYear && (
+        {movieMonth === currentMonth && movieYear === currentYear && (
           <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
             new
           </span>

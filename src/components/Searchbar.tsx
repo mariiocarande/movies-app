@@ -27,7 +27,7 @@ const Searchbar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div className="p-2 m-4 rounded-md bg-white">
+    <div className="p-2 m-4 rounded-md bg-slate-100">
       <div className="flex gap-2">
         <input
           placeholder="Search for a movie"
@@ -35,7 +35,7 @@ const Searchbar: React.FC<SearchBarProps> = ({
           onKeyDown={handleKeyDown}
         />
         <button
-          className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md gap-2 disabled:opacity-80"
+          className="flex items-center gap-2 px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:opacity-80"
           type="button"
           onClick={searchMovies}
           disabled={searchValue.length === 0 || isLoading}

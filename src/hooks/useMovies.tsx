@@ -1,14 +1,12 @@
+import { useState } from "react";
 import { api } from "@/api/Api";
 import { AxiosResponse } from "axios";
-import { useState } from "react";
-import { Movie, MovieDetailType } from "../types/types";
 
-export interface MoviesDataType {
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-  page: number;
-}
+import {
+  FetchMoviesParams,
+  MovieDetailType,
+  MoviesDataType,
+} from "../types/types";
 
 const useMovies = () => {
   const [moviesData, setMoviesData] = useState<MoviesDataType>({
@@ -20,11 +18,19 @@ const useMovies = () => {
   const [movieData, setMovieData] = useState<MovieDetailType>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchMovies = async (page?: number) => {
+  const fetchMovies = async (values?: FetchMoviesParams) => {
     setIsLoading(true);
 
     await api
-      .get("/movie/popular", { params: { page } })
+      .get("/discover/movie", {
+        params: {
+          sort_by: values?.sort_by,
+          with_genres: values?.with_genres,
+          with_original_language: values?.with_original_language,
+          primary_release_year: values?.primary_release_year,
+          page: values?.page || 1,
+        },
+      })
       .then((response: AxiosResponse) => {
         setMoviesData(response.data);
         setIsLoading(false);

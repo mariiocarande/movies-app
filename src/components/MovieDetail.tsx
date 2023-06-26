@@ -5,9 +5,9 @@ import ReactStars from "react-stars";
 import { HiArrowLeft } from "react-icons/hi2";
 
 import Spinner from "./Spinner";
-import { LanguagesTypes } from "../types/types";
 import useMovies from "@/hooks/useMovies";
 import { formatToCurrency } from "@/utils/utils";
+import { LanguagesTypes } from "../types/types";
 
 interface Props {
   movieId: string;
